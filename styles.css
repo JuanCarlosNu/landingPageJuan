@@ -1,0 +1,257 @@
+/*font-family: "Inconsolata", monospace;
+font-family: "Roboto Mono", monospace;*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;/*Esto mantiene el ancho a pesar del padding y el margin*/
+    font-family: 'inconsolata', monospace;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+body{
+    background-color: black;/* todo: borrar cuando esté el fondo listo*/
+    
+}
+
+header{
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 3%;
+}
+
+.logo{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.navlist{
+    display: flex;
+}
+
+.navlist a{
+    margin-left: 60px;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all .5x ease;
+   
+}
+
+.navlist a:hover {
+  border-bottom: 2px solid white;
+}
+
+#menu-icon{
+    
+    font-size: 35px;/* agrandamos el ícono del menu*/
+    z-index: 11;/*para que esté sobre el header*/
+    cursor: pointer;
+
+}
+#menu-toggle{
+    display: hidden;
+    z-index: 12;   /*nunca quiero que se vea el checkbox*/
+}
+.menu-icon-action{
+    display: hidden;
+}
+
+/*************HERO SECTION******************/
+
+.hero {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(245.59deg, #31494e 0%, #385e70 25%, #131313 75%);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+
+
+}
+.hero-image img{
+    width: 500px;
+    border-radius: 50%;
+    margin: 10% 0 0 10%;
+    height: auto;
+    transition: all .5s linear;
+}
+.hero-image img:hover{
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+section{
+    padding: 0 8%;
+}
+
+.hero-text h5{
+    font-size: 14px;
+    font-weight: 400px;
+    margin-bottom: 25px;
+
+}
+.hero-text h1{
+    font-family: 'Roboto Mono';
+    font-size: 50px;
+    line-height: 1;
+    margin: 0 0 30px;
+
+}
+.hero-text h4{
+    font-size: 18px;
+    font-weight: 600px;
+    margin-bottom: 10px;
+
+}
+.hero-text p {
+    font-size: 80%;/* relativo al contenedor padre que se va achicar al achicar la pantalla*/
+    line-height: 1.9;
+    margin-bottom: 40px;
+
+}
+.hero-text a {
+    display: inline-block;/* me permite que le pueda dar alto y ancho a estos elementos */
+    background-color: #4d4d4d;
+    border: 1px solid transparent;
+    padding: 15px 30px;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 500;
+    border-radius: 30px;
+    text-transform: uppercase; 
+    transition: all 1s ease;
+}
+.hero-text a:hover{
+    background-color: transparent;
+    border: 1px solid white;
+    transform: translateX(8px);
+}
+
+.hero-text a.proyectos{
+    background-color: transparent;
+    border: 1px solid white;
+    margin-left: 20px;
+}
+
+.hero-text a.proyectos i{
+    /* vertical-align: middle; */
+    margin-right: 5px;
+
+
+}
+
+.icons{
+    position: absolute;
+    top: 50vh;
+    padding: 0 3%;
+    transform: translateY(-50%);
+}
+.icons i{
+    display: block;/* por defecto son inline, entonces hace que se ubiquen uno abajo del otro*/
+    margin: 26px 0;
+    font-size: 28px;
+    transition: all .5s ease;
+}
+.icons i:hover{
+    color: #4d4d4d;
+    transform: translateY(-5px);
+}
+
+.scroll-down{
+    position: absolute;
+    bottom: 6%;
+    right: 3%;
+    
+
+}
+.scroll-down i {
+display: block;
+padding: 12px;
+font-size: 45px;
+background-color: #21383d;
+border-radius: 30px;
+transition: all .5 ease;
+
+}
+
+.scroll-down i:hover{
+    transform: translateY(5px);
+}
+
+/**************RESPONSIVE: MEDIA QUERIES*****************/
+
+@media (max-width:992px) {
+    section{
+        padding: 0 3%;
+        transition: .2s;
+        
+    }
+    .icons{
+        display: none;
+    }
+    .hero-text{
+        padding: 0;
+    }
+    .hero-image img{
+        width: 80%;
+        margin: 10% 0 0 10%;
+
+    }
+    .scroll-down{
+        display: none;
+    }
+}
+
+@media (max-width: 710px){
+
+    .menu-icon-action{
+        display: block;
+    }
+    #menu-icon{
+        display: block;
+    }
+    .hero-text{
+        text-align: center;
+        padding-top: 100px;
+    }
+    /*navlist collapsed stying*/
+    .navlist{
+        position: absolute;
+        top: 100%;
+        right: -100%;/* se esconde hacia la derecha*/
+        width: 200px;
+        height: 180px;
+        background-color: #021719ef;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px;
+        transition: all 1s ease;
+    }
+    .navlist a{
+        display: block;
+        margin: 7px 0;
+    }
+    #menu-toggle:checked + label.menu-icon-action + ul{
+        right: 0;
+    }
+}
+
+@media (max-width: 640px){
+    .hero{
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
